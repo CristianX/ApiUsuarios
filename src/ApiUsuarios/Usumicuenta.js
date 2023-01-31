@@ -75,7 +75,7 @@ router.post('/:id', async (req, res) => {
         const {  UsuPassword } = req.body;
 
         // var crypPass = encrypt(UsuPassword)
-        var  crypPass = await apiSeguridades.encriptarEmail(correo);
+        var  crypPass = await apiSeguridades.encriptarEmail(UsuPassword);
 
             var newvalues = {
                 $set: {
