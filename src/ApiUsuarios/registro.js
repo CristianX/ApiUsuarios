@@ -14,7 +14,7 @@ router.get('/:correo/:pass/:rol', async (req, res) => {
     // var crypEmail = encrypt(correo)
     // var crypPass = encrypt(pass)
     var crypEmail = await apiSeguridades.encriptarEmail(correo);
-    var  crypPass = await apiSeguridades.encriptarEmail(correo);
+    var  crypPass = await apiSeguridades.encriptarEmail(pass);
 
     try {
         if (rol === "Movil") {
@@ -43,7 +43,7 @@ router.post('/', async (req, res) => {
     // var crypEmail = encrypt(UsuEmail)
     // var crypPass = encrypt(UsuPassword)
     var crypEmail = await apiSeguridades.encriptarEmail(correo);
-    var  crypPass = await apiSeguridades.encriptarEmail(correo);
+    var  crypPass = await apiSeguridades.encriptarEmail(UsuPassword);
 
     console.log(UsuEmail)
 
