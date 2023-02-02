@@ -38,11 +38,13 @@ router.get('/:correo/:pass/:rol', async (req, res) => {
 
 router.post('/', async (req, res) => {
 
+    console.log("Body enviado", req.body);
+
     const { UsuEmail, UsuPassword, UsuRol } = req.body;
 
     // var crypEmail = encrypt(UsuEmail)
     // var crypPass = encrypt(UsuPassword)
-    var crypEmail = await apiSeguridades.encriptarEmail(correo);
+    var crypEmail = await apiSeguridades.encriptarEmail(UsuEmail);
     var  crypPass = await apiSeguridades.encriptarEmail(UsuPassword);
 
     console.log(UsuEmail)

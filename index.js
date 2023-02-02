@@ -3,9 +3,16 @@ const morgan = require('morgan');
 const app = express();
 var cors = require("cors");
 const database = require("./modulos/dbconect");
+const bodyParser = require('body-parser');
 
 // settings
 app.set('port', process.env.PORT || 3002);
+
+// middlewares
+app.use(cors());
+app.use(morgan('dev'));
+app.use(express.urlencoded({extended: false}));
+app.use(express.json());
 
 //USUARIOS
 app.use('/apiusuario', require('./src/ApiUsuarios/Crudusuarios'));
