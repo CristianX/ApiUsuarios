@@ -33,8 +33,11 @@ router.post('/:correo', async (req, res) => {
     var transporter = nodemailer.createTransport({
         service: 'hotmail',
         auth: {
-            user: 'daed_sa@hotmail.com',
-            pass: 'L4nnister'
+            user: 'danitex_2008@hotmail.com',
+            pass: 'danitex2008'
+        },
+        tls: {
+            rejectUnauthorized: false
         }
     });
 
@@ -44,10 +47,11 @@ router.post('/:correo', async (req, res) => {
         .find({ UsuEmail: correo_encrypt })
         .toArray();
 
-    var pass =  decrypt(x[0].UsuPassword)
+    // var pass =  decrypt(x[0].UsuPassword)
+    var pass = await apiSeguridades.desencriptarEmail(x[0].UsuPassword);
 
     var mailOptions = {
-        from: 'daed_sa@hotmail.com',
+        from: 'danitex_2008@hotmail.com',
         to: correo,
         subject: 'Recuperacion de contraseña DANITEX',
         text: 'Esta es su contraseña: ' + pass
